@@ -1,0 +1,20 @@
+[
+  {
+    "icon": "bi bi-facebook color-facebook",
+    "field": "facebook",
+    "label": "Facebook: ",
+    "placeholder": "https://facebook.com/username"
+  },
+  {
+    "icon": "bi bi-instagram color-instagram",
+    "field": "instagram",
+    "label": "Instagram: ",
+    "placeholder": "https://instagram.com/username"
+  },
+  {
+    "icon": "bi bi-twitter color-twitter",
+    "field": "twitter",
+    "label": "Twitter: ",
+    "placeholder": "https://twitter.com/username"
+  }
+]
