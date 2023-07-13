@@ -2,7 +2,7 @@ version: '3'
 
 services:
   server:
-    container_name: nq-hoa
+    container_name: hoa-resident
     image: nginx:1.21.6
     restart: always
     volumes:
