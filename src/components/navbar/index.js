@@ -11,7 +11,7 @@ function NavBar(props) {
 
     return <Nav
         className="shadow-sm"
-        title="DASHBOARD"
+        title="Homeowner Association"
         onClickNavigate={onClickNavigate}
         {...props}/>
 }

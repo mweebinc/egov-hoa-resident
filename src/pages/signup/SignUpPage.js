@@ -36,10 +36,9 @@ class SignUpPage extends BasePage {
                                         <div className="text-center p-3 w-100">
                                             <img
                                                 className="img-fluid login-img mb-3 w-50"
-                                                src="/logo.svg"
-                                                alt="company-logo"
-                                            />
-                                            <h1 className="fw-bold text-black">Homeowners association</h1>
+                                                alt="company logo"
+                                                src="/logo.png"/>
+                                            <h1 className="fw-bold text-black">Homeowner Association</h1>
                                         </div>
                                     </div>
                                 </div>

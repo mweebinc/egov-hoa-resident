@@ -11,11 +11,6 @@ import TestPage from "./pages/TestPage";
 import TenantPage from "./pages/TenantPage";
 
 Queue.setUrl("https://api.innque.com/v1");
-// Queue.setUrl("http://188.166.177.35:8888/v1");
-// Queue.setUrl('https://api.figarocoffeegroup.com/v1');
-// Queue.setUrl('https://api.test.figarocoffeegroup.com/v1');
-// Queue.setUrl('https://api.mercantiletravel.com/v1');
-// Queue.setApplicationId('DHQK1WV3bj');// cavite
 Queue.setApplicationId("82fj5Z5NXY");
 
 function App() {

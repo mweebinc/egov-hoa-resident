@@ -40,8 +40,8 @@ class SignInPage extends BasePage {
                                             <img
                                                 className="img-fluid login-img mb-3 w-50"
                                                 alt="company logo"
-                                                src="/logo.svg"/>
-                                            <h1 className="fw-bold text-black">NQ Dashboard</h1>
+                                                src="/logo.png"/>
+                                            <h1 className="fw-bold text-black">Homeowner Association</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -89,12 +89,12 @@ class SignInPage extends BasePage {
                                                 </Button>
                                             </div>
                                             <div className="text-center">
-                                            <span className="fs-sm">
-                                              Don't have an account?
-                                              <Link to="/signup" className="ms-1">
-                                               <span className="text-decoration-underline">Sign up</span>
-                                              </Link>
-                                            </span>
+                                                <span className="fs-sm">
+                                                  Don't have an account?
+                                                  <Link to="/signup" className="ms-1">
+                                                   <span className="text-decoration-underline">Sign up</span>
+                                                  </Link>
+                                                </span>
                                             </div>
                                         </div>
 
