@@ -1,44 +1,32 @@
 import React from "react";
-import ResidentFormPresenter from "./ResidentFormPresenter";
+import PaymentFormPresenter from "./PaymentFormPresenter";
 import { getObjectUseCase, upsertUseCase } from "../../usecases/object";
 import withRouter from "../../withRouter";
 import BaseFormPage from "../../base/BaseFormPage";
 import NavBar from "../../components/navbar";
 import FormFactory from "../../components/FormFactory";
-import { dialog } from "nq-component";
 
 class ResidentFormPage extends BaseFormPage {
   constructor(props) {
     super(props);
     this.state = { object: {} };
-    this.presenter = new ResidentFormPresenter(
+    this.presenter = new PaymentFormPresenter(
       this,
       getObjectUseCase(),
       upsertUseCase()
     );
   }
   getCollectionName() {
-    return "residents";
+    return "finances";
   }
-
-  showSuccess(message, title) {
-    const options = {
-      title: title || "Success",
-      message: message,
-      icon: "bi bi-check-circle",
-      type: "success",
-      positiveButton: "OKAY",
-      negativeButton: false,
-    };
-    return this.showDialog(options);
-  }
-
   render() {
     const object = this.state.object;
     const schema = this.getSchema(this.getCollectionName());
+    const user = this.getCurrentUser();
+
     if (!schema) return <h1>no schema</h1>;
-    console.log(object);
-    const label = this.getObjectId() === undefined ? "Add New " : "Edit ";
+    // const label = this.getObjectId() === undefined ? "Add New " : "Edit ";
+    const label = "Make Payment";
     return (
       <>
         <NavBar />
@@ -46,7 +34,8 @@ class ResidentFormPage extends BaseFormPage {
           <div className='h-100'>
             <div className='p-3 p-lg-4'>
               <h1 className='fw-bold mt-3 text-capitalize'>
-                {label + (schema.label || this.getCollectionName())}
+                {/* {label + (schema.label || this.getCollectionName())} */}
+                {label}
               </h1>
               <div className='mt-3 bg-white shadow rounded p-3 px-lg-5 py-lg-4'>
                 <form onSubmit={this.onSubmitForm.bind(this)}>
