@@ -12,13 +12,13 @@ services:
     #      - 8080:80
     labels:
       - traefik.enable=true
-      - traefik.http.services.panel.loadbalancer.server.port=80
-      - traefik.http.routers.panel.rule=Host("hoa.innque.com")
-      - traefik.http.routers.panel.entrypoints=web
-      - traefik.http.routers.panel_secured.rule=Host("hoa.innque.com")
-      - traefik.http.routers.panel_secured.entrypoints=websecure
-      - traefik.http.routers.panel_secured.tls.certresolver=myhttpchallenge
-      - traefik.http.routers.panel.middlewares=redirect@file
+      - traefik.http.services.hoa-resident.loadbalancer.server.port=80
+      - traefik.http.routers.hoa-resident.rule=Host("hoa.innque.com")
+      - traefik.http.routers.hoa-resident.entrypoints=web
+      - traefik.http.routers.hoa-resident_secured.rule=Host("hoa.innque.com")
+      - traefik.http.routers.hoa-resident_secured.entrypoints=websecure
+      - traefik.http.routers.hoa-resident_secured.tls.certresolver=myhttpchallenge
+      - traefik.http.routers.hoa-resident.middlewares=redirect@file
 
 
 networks:
