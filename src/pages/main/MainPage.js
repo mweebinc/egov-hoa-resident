@@ -109,6 +109,11 @@ class MainPage extends BasePage {
                     <Routes>
                         <Route
                             exact
+                            path={"/"}
+                            element={<ResidentFormPage/>}
+                        />
+                        <Route
+                            exact
                             path={"/collection/dashboard"}
                             element={<DashboardPage/>}
                         />
