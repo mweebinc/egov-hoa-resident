@@ -44,11 +44,14 @@ class ResidentFormPage extends BaseFormPage {
               </h1>
               <div className="mt-3 bg-white shadow rounded p-3 px-lg-5 py-lg-4">
                 <form onSubmit={this.onSubmitForm.bind(this)}>
-                  <FormFactory
-                    schema={schema}
-                    object={object}
-                    onChange={this.onChange.bind(this)}
-                  />
+                  <div className="row g-3">
+                    <FormFactory
+                        schema={schema}
+                        object={object}
+                        onChange={this.onChange.bind(this)}
+                    />
+                  </div>
+
                   <div className="mt-4">
                     <button
                       type="submit"
