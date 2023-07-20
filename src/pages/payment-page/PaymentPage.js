@@ -41,6 +41,7 @@ class PaymentPage extends BaseListPage {
                 ]}
                 objects={objects}
                 collapse={false}
+                className="mt-4"
               />
             </div>
           </div>
