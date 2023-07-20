@@ -27,7 +27,7 @@ class PaymentFormPresenter extends BaseFormPresenter {
       await this.upsertUseCase.execute(collection, {
         ...this.change,
         createdBy: user.id,
-
+        status: "PENDING",
         // member: {id: user.profile.id},
       });
     } catch (error) {
