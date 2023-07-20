@@ -50,20 +50,23 @@ class ResidentFormPage extends BaseFormPage {
               </h1>
               <div className="mt-3 bg-white shadow rounded p-3 px-lg-5 py-lg-4">
                 <form onSubmit={this.onSubmitForm.bind(this)}>
-                  <FormFactory
-                    excludeFields={[
-                      "status",
-                      "resident",
-                      "receipt",
-                      "amount",
-                      "date",
-                      "description",
-                      "createdBy",
-                    ]}
-                    schema={schema}
-                    object={object}
-                    onChange={this.onChange.bind(this)}
-                  />
+                  <div className="row g-3">
+                    <FormFactory
+                      excludeFields={[
+                        "status",
+                        "resident",
+                        "receipt",
+                        "amount",
+                        "date",
+                        "description",
+                        "createdBy",
+                        "resident2",
+                      ]}
+                      schema={schema}
+                      object={object}
+                      onChange={this.onChange.bind(this)}
+                    />
+                  </div>
                 </form>
                 {description["description"] ? (
                   <div class="card mt-2">
@@ -73,18 +76,21 @@ class ResidentFormPage extends BaseFormPage {
               </div>
               <div className="mt-3 bg-white shadow rounded p-3 px-lg-5 py-lg-4">
                 <form onSubmit={this.onSubmitForm.bind(this)}>
-                  <FormFactory
-                    excludeFields={[
-                      "status",
-                      "resident",
-                      "method",
-                      "description",
-                      "createdBy",
-                    ]}
-                    schema={schema}
-                    object={object}
-                    onChange={this.onChange.bind(this)}
-                  />
+                  <div className="row g-3">
+                    <FormFactory
+                      excludeFields={[
+                        "status",
+                        "resident",
+                        "method",
+                        "description",
+                        "createdBy",
+                        "resident2",
+                      ]}
+                      schema={schema}
+                      object={object}
+                      onChange={this.onChange.bind(this)}
+                    />
+                  </div>
                   <div className="mt-4">
                     <button
                       type="submit"

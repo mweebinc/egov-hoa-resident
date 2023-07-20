@@ -28,6 +28,7 @@ class PaymentFormPresenter extends BaseFormPresenter {
         ...this.change,
         createdBy: user.id,
         status: "PENDING",
+        resident2: user.first_name,
         // member: {id: user.profile.id},
       });
     } catch (error) {

@@ -38,6 +38,7 @@ class PaymentPage extends BaseListPage {
                   "createdAt",
                   "updatedAt",
                   "createdBy",
+                  "resident2",
                 ]}
                 objects={objects}
                 collapse={false}
