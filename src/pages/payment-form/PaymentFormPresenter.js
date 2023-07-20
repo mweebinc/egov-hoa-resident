@@ -1,15 +1,60 @@
 import BaseFormPresenter from "../../base/BaseFormPresenter";
 
 class PaymentFormPresenter extends BaseFormPresenter {
+  componentDidMount() {
+    this.init();
+    this.getObject();
+    this.getPaymentMethod();
+  }
+
+  init() {
+    this.object = {};
+    this.change = {}; // when data is change
+    this.limit = 10;
+    this.current = 1;
+    this.where = {};
+    this.objects = [];
+    this.sort = { createdAt: -1 };
+  }
   onChange(value, field) {
     this.change[field] = value;
 
     const payment = this.change[field];
 
-    if (payment["name"] === "Gcash") {
+    const method = this.view.getPaymentMethod();
+
+    const paymentMethod = method.map((m) => m.name.includes(payment["name"]));
+
+    if (paymentMethod) {
       this.view.showDescription(payment);
-    } else if (payment["name"] === "WALK IN") {
-      this.view.showDescription(payment);
+    }
+  }
+
+  async getPaymentMethod() {
+    const collection = "payment_methods";
+    const skip = (this.current - 1) * this.limit;
+    const query = {
+      count: true,
+      limit: this.limit,
+      skip: skip,
+      where: this.where,
+      include: ["all"],
+      sort: this.sort,
+    };
+    this.view.showProgress();
+    try {
+      const { count, objects } = await this.findObjectUseCase.execute(
+        collection,
+        query
+      );
+      this.objects = this.objects.concat(objects);
+
+      console.log("hahaha", this.objects);
+      this.view.setPaymentMethod(this.objects);
+      this.view.hideProgress();
+    } catch (error) {
+      this.view.hideProgress();
+      this.view.showError(error);
     }
   }
   async save() {

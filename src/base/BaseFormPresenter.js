@@ -1,8 +1,9 @@
 class BaseFormPresenter {
-  constructor(view, getObjectUseCase, upsertUseCase) {
+  constructor(view, getObjectUseCase, upsertUseCase, findObjectUseCase) {
     this.view = view;
     this.getObjectUseCase = getObjectUseCase;
     this.upsertUseCase = upsertUseCase;
+    this.findObjectUseCase = findObjectUseCase;
   }
 
   componentDidMount() {

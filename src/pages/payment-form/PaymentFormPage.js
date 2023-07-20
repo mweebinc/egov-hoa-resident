@@ -1,6 +1,10 @@
 import React from "react";
 import PaymentFormPresenter from "./PaymentFormPresenter";
-import { getObjectUseCase, upsertUseCase } from "../../usecases/object";
+import {
+  findObjectUseCase,
+  getObjectUseCase,
+  upsertUseCase,
+} from "../../usecases/object";
 import withRouter from "../../withRouter";
 import BaseFormPage from "../../base/BaseFormPage";
 import NavBar from "../../components/navbar";
@@ -9,16 +13,25 @@ import FormFactory from "../../components/FormFactory";
 class ResidentFormPage extends BaseFormPage {
   constructor(props) {
     super(props);
-    this.state = { object: {}, description: {} };
+    this.state = { object: {}, description: {}, paymentMethod: {} };
     this.presenter = new PaymentFormPresenter(
       this,
       getObjectUseCase(),
-      upsertUseCase()
+      upsertUseCase(),
+      findObjectUseCase()
     );
   }
 
   showDescription(description) {
     this.setState({ description });
+  }
+
+  getPaymentMethod() {
+    return this.state.paymentMethod;
+  }
+
+  setPaymentMethod(paymentMethod) {
+    this.setState({ paymentMethod });
   }
 
   getCollectionName() {
@@ -29,10 +42,9 @@ class ResidentFormPage extends BaseFormPage {
   }
 
   render() {
-    const object = this.state.object;
+    const { object } = this.state;
     const description = this.state.description;
     const schema = this.getSchema(this.getCollectionName());
-    console.log("desc", description);
 
     if (!schema) return <h1>no schema</h1>;
     // const label = this.getObjectId() === undefined ? "Add New " : "Edit ";
