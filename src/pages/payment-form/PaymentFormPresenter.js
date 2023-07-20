@@ -1,6 +1,17 @@
 import BaseFormPresenter from "../../base/BaseFormPresenter";
 
 class PaymentFormPresenter extends BaseFormPresenter {
+  onChange(value, field) {
+    this.change[field] = value;
+
+    const payment = this.change[field];
+
+    if (payment["name"] === "Gcash") {
+      this.view.showDescription(payment);
+    } else if (payment["name"] === "WALK IN") {
+      this.view.showDescription(payment);
+    }
+  }
   async save() {
     const collection = this.view.getCollectionName();
     const object = this.view.getObject();
@@ -9,12 +20,14 @@ class PaymentFormPresenter extends BaseFormPresenter {
       this.change.id = object.id;
     } else {
       this.change.acl = this.view.getAcl();
+      console.log("value2: ", this.change.acl);
     }
 
     try {
       await this.upsertUseCase.execute(collection, {
         ...this.change,
-        resident: user,
+        createdBy: user.id,
+
         // member: {id: user.profile.id},
       });
     } catch (error) {
@@ -27,6 +40,7 @@ class PaymentFormPresenter extends BaseFormPresenter {
       await this.save();
       this.view.submissionSuccess();
       this.view.showSuccessSnackbar("Successfully saved!");
+      this.view.navigateBack();
     } catch (error) {
       this.view.submissionError(error);
       this.view.showError(error);

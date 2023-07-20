@@ -9,12 +9,16 @@ import FormFactory from "../../components/FormFactory";
 class ResidentFormPage extends BaseFormPage {
   constructor(props) {
     super(props);
-    this.state = { object: {} };
+    this.state = { object: {}, description: {} };
     this.presenter = new PaymentFormPresenter(
       this,
       getObjectUseCase(),
       upsertUseCase()
     );
+  }
+
+  showDescription(description) {
+    this.setState({ description });
   }
 
   getCollectionName() {
@@ -26,12 +30,13 @@ class ResidentFormPage extends BaseFormPage {
 
   render() {
     const object = this.state.object;
+    const description = this.state.description;
     const schema = this.getSchema(this.getCollectionName());
-    const ano = schema.fields.method;
-    console.log("render", ano);
+    console.log("desc", description);
 
     if (!schema) return <h1>no schema</h1>;
     // const label = this.getObjectId() === undefined ? "Add New " : "Edit ";
+
     const label = "Make Payment";
     return (
       <>
@@ -52,12 +57,19 @@ class ResidentFormPage extends BaseFormPage {
                       "receipt",
                       "amount",
                       "date",
+                      "description",
+                      "createdBy",
                     ]}
                     schema={schema}
                     object={object}
                     onChange={this.onChange.bind(this)}
                   />
                 </form>
+                {description["description"] ? (
+                  <div class="card mt-2">
+                    <div class="card-body">{description.description}</div>
+                  </div>
+                ) : null}
               </div>
               <div className="mt-3 bg-white shadow rounded p-3 px-lg-5 py-lg-4">
                 <form onSubmit={this.onSubmitForm.bind(this)}>
@@ -67,6 +79,7 @@ class ResidentFormPage extends BaseFormPage {
                       "resident",
                       "method",
                       "description",
+                      "createdBy",
                     ]}
                     schema={schema}
                     object={object}
