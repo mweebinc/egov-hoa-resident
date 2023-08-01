@@ -18,6 +18,10 @@ class PaymentFormPresenter extends BaseFormPresenter {
   }
   onChange(value, field) {
     this.change[field] = value;
+  }
+
+  onChange1(value, field) {
+    this.change[field] = value;
 
     const payment = this.change[field];
 

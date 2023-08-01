@@ -34,6 +34,10 @@ class ResidentFormPage extends BaseFormPage {
     this.setState({ paymentMethod });
   }
 
+  onChange1(value, field) {
+    this.presenter.onChange1(value, field);
+  }
+
   getCollectionName() {
     return "payments";
   }
@@ -76,7 +80,7 @@ class ResidentFormPage extends BaseFormPage {
                       ]}
                       schema={schema}
                       object={object}
-                      onChange={this.onChange.bind(this)}
+                      onChange={this.onChange1.bind(this)}
                     />
                   </div>
                 </form>
